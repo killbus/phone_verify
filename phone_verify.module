@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains phone_verify.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function phone_verify_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the phone_verify module.
+    case 'help.page.phone_verify':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
