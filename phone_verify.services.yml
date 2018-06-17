@@ -1,0 +1,4 @@
+services:
+  phone_verify.sms_code_verifier:
+    class: Drupal\phone_verify\SmsCodeVerifier
+    arguments: []

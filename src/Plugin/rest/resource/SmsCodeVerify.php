@@ -3,6 +3,7 @@
 namespace Drupal\phone_verify\Plugin\rest\resource;
 
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\phone_verify\SmsCodeVerifierInterface;
 use Drupal\rest\ModifiedResourceResponse;
 use Drupal\rest\Plugin\ResourceBase;
 use Psr\Log\LoggerInterface;
@@ -33,6 +34,11 @@ class SmsCodeVerify extends ResourceBase
     protected $currentUser;
 
     /**
+     * @var SmsCodeVerifierInterface
+     */
+    protected $smsCodeVerifier;
+
+    /**
      * Constructs a new SmsCodeVerify object.
      *
      * @param array $configuration
@@ -54,11 +60,13 @@ class SmsCodeVerify extends ResourceBase
         $plugin_definition,
         array $serializer_formats,
         LoggerInterface $logger,
-        AccountProxyInterface $current_user)
+        AccountProxyInterface $current_user,
+        SmsCodeVerifierInterface $sms_code_verifier)
     {
         parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger);
 
         $this->currentUser = $current_user;
+        $this->smsCodeVerifier = $sms_code_verifier;
     }
 
     /**
@@ -72,7 +80,8 @@ class SmsCodeVerify extends ResourceBase
             $plugin_definition,
             $container->getParameter('serializer.formats'),
             $container->get('logger.factory')->get('phone_verify'),
-            $container->get('current_user')
+            $container->get('current_user'),
+            $container->get('phone_verify.sms_code_verifier')
         );
     }
 
@@ -104,6 +113,7 @@ class SmsCodeVerify extends ResourceBase
             ->setDirection(\Drupal\sms\Direction::OUTGOING);
         try {
             $sms_service->send($sms);
+            $this->smsCodeVerifier->setCode($data['phone'], $sms_code);
         }
         catch (\Drupal\sms\Exception\RecipientRouteException $e) {
             // Thrown if no gateway could be determined for the message.
