@@ -1,0 +1,2 @@
+sms_template: '你的验证码是【{@code}】，打死都不告诉别人。'
+sms_remote_template: ''

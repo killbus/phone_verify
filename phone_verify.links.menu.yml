@@ -1,0 +1,7 @@
+phone_verify.phone_verify_setting_form:
+  title: 'Phone Verify Settings'
+  route_name: phone_verify.phone_verify_setting_form
+  description: 'A description for the menu entry'
+  parent: system.admin_config_system
+  weight: 99
+

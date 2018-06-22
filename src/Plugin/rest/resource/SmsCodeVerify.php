@@ -107,10 +107,18 @@ class SmsCodeVerify extends ResourceBase
         // 发送短信
         /** @var \Drupal\sms\Provider\SmsProviderInterface $sms_service */
         $sms_service = \Drupal::service('sms.provider');
+
+        $sms_config = \Drupal::config('phone_verify.setting');
         $sms = (new \Drupal\sms\Message\SmsMessage())
-            ->setMessage('您的验证码是【'.$sms_code.'】，打死都不告诉别人。') // Set the message.
+            ->setMessage(str_replace('{@code}', $sms_code, $sms_config->get('sms_template'))) // Set the message.
             ->addRecipient($data['phone']) // Set recipient phone number
             ->setDirection(\Drupal\sms\Direction::OUTGOING);
+
+        $sms->setOption('remote_template', $sms_config->get('sms_remote_template'));
+        $sms->setOption('remote_template_data', [
+          'code' => $sms_code
+        ]);
+
         try {
             $sms_service->send($sms);
             $this->smsCodeVerifier->setCode($data['phone'], $sms_code);
