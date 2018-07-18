@@ -9,5 +9,5 @@ dependencies:
   - rest
   - serialization
   - simple_oauth
-  - user
   - sms
+  - user
