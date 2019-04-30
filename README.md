@@ -7,5 +7,5 @@ Features:
 - Setting form to define the sms message template of the verify code message.
 - Service `phone_verify.sms_code_verifier`, to verify the code by developer.
 
-This module is in use by the [user_phone](https://www.drupal.org/project/user_phone) module, 
+This module is used by the [user_phone](https://www.drupal.org/project/user_phone) module, 
 which provides user-phone binding, and phone-sms-login functionality.
