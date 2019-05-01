@@ -11,6 +11,7 @@
     "source": "http://cgit.drupalcode.org/phone_verify"
   },
   "require": {
-    "zendframework/zend-math": "^3.0"
+    "zendframework/zend-math": "^3.0",
+    "drupal/smsframework": "^1.1"
   }
 }
