@@ -12,6 +12,6 @@
   },
   "require": {
     "zendframework/zend-math": "^3.0",
-    "drupal/smsframework": "^1.1"
+    "drupal/smsframework": "^1.2"
   }
 }
