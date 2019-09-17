@@ -101,6 +101,10 @@ class SmsCodeVerify extends ResourceBase
             throw new AccessDeniedHttpException();
         }
 
+        if (empty($data['phone']) || strlen((string)$data['phone']) < 11) {
+          throw new BadRequestHttpException('手机号不合规范！');
+        }
+
         $sms_code = Rand::getString(6, '0123456789');
         $salt = Rand::getString(15, 'abcdefghijklmnopqrstuvwxyz0123456789');
 
