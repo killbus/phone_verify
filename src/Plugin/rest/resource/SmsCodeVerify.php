@@ -95,12 +95,6 @@ class SmsCodeVerify extends ResourceBase
      */
     public function post($data)
     {
-        // You must to implement the logic of your REST Resource here.
-        // Use current user after pass authentication to validate access.
-        if (!$this->currentUser->hasPermission('access content')) {
-            throw new AccessDeniedHttpException();
-        }
-
         if (empty($data['phone']) || strlen((string)$data['phone']) < 11) {
           throw new BadRequestHttpException('手机号不合规范！');
         }
