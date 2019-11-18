@@ -4,9 +4,9 @@ description: 'My Awesome Module'
 core: 8.x
 package: Other
 dependencies:
-  - druapl:basic_auth
-  - druapl:rest
-  - druapl:serialization
-  - simple_oauth:simple_oauth
-  - sms:sms
-  - druapl:user
+  - basic_auth
+  - rest
+  - serialization
+  - simple_oauth
+  - sms
+  - user
