@@ -8,5 +8,5 @@ dependencies:
   - drupal:rest
   - drupal:serialization
   - simple_oauth:simple_oauth
-  - sms
+  - smsframework:sms
   - drupal:user
