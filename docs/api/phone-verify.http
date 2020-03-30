@@ -4,11 +4,12 @@
 # * 'gtrp' and 'gtr' create a GET request with or without query parameters;
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
-POST http://{{host}}/api/rest/phone-verify/sms-code-verify?_format=json
+POST {{host}}/api/rest/phone-verify/sms-code-verify?_format=json
 Content-Type: application/json
 
 {
-  "phone": "15999643270"
+  "country": "CN",
+  "number": "15999643270"
 }
 
 ###

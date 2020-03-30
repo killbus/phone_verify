@@ -10,3 +10,4 @@ dependencies:
   - simple_oauth:simple_oauth
   - smsframework:sms
   - drupal:user
+  - mobile_number:mobile_number
